@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CalendarStamp.Views.MainPage"
+             Title="MainPage">
+	<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+		<Label Text="{Binding Title}" />
+	</StackLayout>
+	<StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+		<Button x:Name="startButton" Text="Start" Command="{Binding NewStartEventCommand}" />
+		<Button x:Name="endButton" Text="End" Command="{Binding NewEndEventCommand}" />
+	</StackLayout>
+</ContentPage>

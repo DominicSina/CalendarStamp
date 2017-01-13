@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="22" />
+	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
+	<uses-permission android:name="android.permission.READ_CALENDAR" />
+	<application android:label="CalendarStamp.Droid" android:theme="@style/MyTheme"></application>
+</manifest>
