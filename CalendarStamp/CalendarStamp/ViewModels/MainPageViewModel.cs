@@ -8,6 +8,8 @@ using Xamarin.Forms;
 
 namespace CalendarStamp.ViewModels
 {
+    using CalendarStamp.Models;
+
     using Plugin.Calendars;
     using Plugin.Calendars.Abstractions;
 
@@ -24,8 +26,8 @@ namespace CalendarStamp.ViewModels
             set { SetProperty(ref _lastEventSet, value); }
         }
 
-        private CalendarEvent _lastEvent;
-        public CalendarEvent lastEvent
+        private WorkEvent _lastEvent;
+        public WorkEvent lastEvent
         {
             get { return _lastEvent; }
             set { SetProperty(ref _lastEvent, value); }
@@ -68,13 +70,8 @@ namespace CalendarStamp.ViewModels
             else
             {
                 IList<Calendar> c = await CrossCalendars.Current.GetCalendarsAsync();
-                CalendarEvent e = new CalendarEvent();
-                e.AllDay = false;
-                e.Description = "Work event. Currently not finished";
-                e.Name = "Work";
-                e.Start = DateTime.Now;
-                e.End = DateTime.Now;
-
+                WorkEvent e = new WorkEvent();
+                
                 lastEvent = e;
                 lastEventSet = true;
 
@@ -91,8 +88,8 @@ namespace CalendarStamp.ViewModels
             else
             {
                 IList<Calendar> c = await CrossCalendars.Current.GetCalendarsAsync();
-                lastEvent.End = DateTime.Now;
-                lastEvent.Description = "Finished work event.";
+                lastEvent.end();
+
                 await CrossCalendars.Current.AddOrUpdateEventAsync(c.First(), lastEvent);
 
                 lastEvent = null;
